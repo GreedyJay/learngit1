@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/chat.css">
+    <style>
+        span.num-not-read{
+            padding: 0 6px;
+            height: 18px;
+            border-radius: 9px;
+            line-height: 18px;
+            font-size: xx-small;
+            text-align: center;
+            color: #FFFFFF;
+            background-color: red;
+            display: inline-block;
+            float: right;
+            margin-top: 8px;
+            margin-right: 6px;
+        }
+        .dialog-u:before {
+            content: "";
+            width: 0;
+            height: 0;
+            right: 100%;
+            top: 13px;
+            position: absolute;
+            border-top: 8px solid transparent;
+            border-right: 11px solid #3498db;
+            border-bottom: 8px solid transparent;
+        }
+        .dialog-me:after {
+            content: "";
+            width: 0;
+            height: 0;
+            left: 100%;
+            top: 13px;
+            position: absolute;
+            border-top: 8px solid transparent;
+            border-left: 11px solid #eff0f1;
+            border-bottom: 8px solid transparent;
+        }
+    </style>
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/socket.js"></script>
+    <script>
+        $(function () {
+            $(".sendmessage").click(function () {
+                var ss=$(".shuru").val();
+                var defaluthtml=
+                        '<div class="fixed right layer">'+
+                            '<img src="Images/img_nanjiaoshi.png" style="float: right;margin-top: 3px">'+
+                            '<div class="dialog-me">'+
+                                ss+
+                            '</div>'+
+                        '</div>';
+                if(ss){
+                    $(".sessiondiv").append(defaluthtml);
+                    $(".testp").html(ss);
+                    $(".shuru").val('');
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+        </div>
+        <div class="communicate">
+            <div class="menubar fl">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="friendlist fl scrollbar">
+                <div>
+                    <img src="Images/img_nanjiaoshi.png" class="fl">
+                    <label class="f16 s">系统消息</label>
+                    <p class="fl f14 l testp">你当前的操作环境安全</p>
+                    <span class="chattime fr f12 l">17/02/01</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png"  class="fl">
+                    <label class=" f16 s" >费龙</label>
+                    <p class="fl f14 l">富家大室大kugyk数据开了地方萨芬</p>
+                    <span class="chattime fr f12 l">17/01/21</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png" class="fl">
+                    <label class=" f16 s" >于丹</label>
+                    <p class="fl f14 l">人力行政部节假参加活规范化动</p>
+                    <span class="chattime fr f12 l">17/05/01</span>
+                    <span class="num-not-read">1</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png"  class="fl">
+                    <label class="fl f16 s" >刘阳</label>
+                    <p class="fl f14 l">后端websocket开源框架</p>
+                    <span class="chattime fr f12 l">17/01/21</span>
+                    <span class="num-not-read">125</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png" class="fl">
+                    <label class="fl f16 s" >翟海旭</label>
+                    <p class="fl f14 l">SDK的驱动代码封装</p>
+                    <span class="chattime fr f12 l">17/05/01</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png"  class="fl">
+                    <label class="fl f16 s">赵杰</label>
+                    <p class="fl f14 l">前端自由化requestjs</p>
+                    <span class="chattime fr f12 l">17/01/21</span>
+                    <span class="num-not-read">7</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png"  class="fl">
+                    <label class="fl f16 s" >赵灿</label>
+                    <span class="chattime fr f12 l">17/01/21</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png" class="fl">
+                    <label class="fl f16 s" >曹勇</label>
+                    <span class="chattime fr f12 l">17/05/01</span>
+                </div>
+                <div>
+                    <img src="Images/img_nanjiaoshi.png"  class="fl">
+                    <label class="fl f16 s">吴诺</label>
+                    <span class="chattime fr f12 l">17/01/21</span>
+                </div>
+            </div>
+            <div class="chatbroom fr">
+                <div style="text-align: center;height: 70px;line-height: 70px;color: #000" class="f18">吴嘉欣</div>
+                <div class="sessiondiv " style="overflow: auto;">
+                    <div class="left layer">
+                        <img src="Images/img_nanjiaoshi.png" style="float: left;margin-top: 3px">
+                        <div class="dialog-u">
+                            <!--<span class="xiaojianu" style="font-family:楷体">◆</span>-->
+                            发动机萨克雷花费大数据发动机萨克雷花费大数据发动机萨克雷花费大数据发动机萨克雷花费大数据
+                        </div>
+                    </div>
+                    <!--<div class="fixed right layer">-->
+                        <!--<img src="Images/img_nanjiaoshi.png" style="float: right;margin-top: 3px">-->
+                        <!--<div class="dialog-me">-->
+                            <!--<span class="xiaojianme">◆</span>-->
+                            <!--数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反大数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反馈哈数-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="left layer">-->
+                        <!--<img src="Images/img_nanjiaoshi.png" style="float: left;margin-top: 3px">-->
+                        <!--<div class="dialog-u">-->
+                            <!--<span class="xiaojianu">◆</span>-->
+                            <!--发动机萨克雷花费大数据-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="left layer">-->
+                        <!--<img src="Images/img_nanjiaoshi.png" style="float: left;margin-top: 3px">-->
+                        <!--<div class="dialog-u">-->
+                            <!--<span class="xiaojianu">◆</span>-->
+                            <!--小明的发的哈数据库会发生对接客户尽快发货上卡恢诡谲怪好可怜简单快乐通风功能包括了你的父母VB广济南路工行卡模拟过不来人愤怒-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div style="text-align: center;padding-top: 20px"><label style="background-color: #f5f5f5;border-radius: 5px;padding: 3px" class="f12">15:30</label></div>-->
+                    <!--<div class="fixed right layer">-->
+                        <!--<img src="Images/img_nanjiaoshi.png" style="float: right;margin-top: 3px">-->
+                        <!--<div class="dialog-me">-->
+                            <!--<span class="xiaojianme">◆</span>-->
+                            <!--数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反大数据库会发生反馈哈数发动机萨克雷花费大数据库会发生反馈哈数-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="fixed right layer">
+                        <img src="Images/img_nanjiaoshi.png" style="float: right;margin-top: 3px">
+                        <div class="dialog-me">
+                            <span class="xiaojianme">◆</span>
+                            <img src="Images/file-img/ZIP.png" class="fl">
+                            <label class="fl f14 m left10">假如世界给我三天光阴</label><br>
+                            <span class="fl left10 top10 l f12">200.8K</span>
+                        </div>
+                    </div>
+                    <!--<div class="fixed right layer">-->
+                        <!--<img src="Images/img_nanjiaoshi.png" style="float: right;margin-top: 3px">-->
+                        <!--<div class="dialog-me">-->
+                            <!--<span class="xiaojianme">◆</span>-->
+                            <!--<img src="Images/file-img/doc.png" class="fl">-->
+                            <!--<label class="fl f14 m left10">假如世界给我三天光阴</label><br>-->
+                            <!--<span class="fl left10 top10 l f12">200.8K</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div>
+                <div class="input_block">
+                    <img src="Images/img_wenjianjia.png" class="folder finger"><br>
+                    <textarea class="bi shuru "></textarea>
+                    <button class="sendmessage fr ms-font">发 送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

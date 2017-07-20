@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/cart.css">
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Bootstrap/myjs/bootstrap.min.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/socket.js"></script>
+    <style>
+        .bookdetali{
+            height: 900px;
+            width: calc(100% - 20px);
+            margin: 10px auto;
+            background-color: #fff;
+        }
+        .bookinfo_bar{width: calc(100% - 40px);height: 202px; margin: 20px auto;}
+        .bookinfo_bar label{margin-top: 10px;display: inline-block}
+        .bookinfo_bar label:nth-child(2){margin-top: 0px}
+        .bookinfo_bar button{width: 122px;height: 32px;border: 1px solid #CCCCCC;border-radius: 4px;font-size: 14px;margin-right: 40px;background-color: #EBEBEB;color: #666666}
+
+        .bookcover{width: 152px;height: 202px;background-color: #1db702;}
+        .introtext{width: calc(100% - 40px);margin: 20px auto;text-indent: 2em;line-height: 1.5em}
+        .recommend_list{width: calc(100% - 40px);height: 162px;margin: 20px auto;background-color: rebeccapurple;}
+
+        .pre_icon,.post_icon{width:30px;height: 60px;background-color: #e5e5e5;margin-top: 50px;cursor: pointer}
+        .pre_icon{background: url("Images/img_shangyiye.png") no-repeat center}
+        .post_icon{background: url("Images/img_xiayiye.png") no-repeat center}
+        .dividing_line{position: relative;bottom: 2px;margin-left: 20px}
+       /* 新加的订单模态样式*/
+        .findpwd-shadow{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);z-index: 100;}
+        .findpwd-tip{width: 780px;height: 500px;background-color: #FFFFFF;margin: 150px auto;box-shadow: 0 0 5px 5px #444;border-radius: 5px}
+        .orderhead{height: 45px;border-bottom: 1px solid #ccc}
+        .ordercontent{height: 395px;border-bottom: 1px solid #ccc;overflow: auto}
+        .ordercontent ul li{width: 250px;height: 140px;float: left}
+        .paybtn{width: 120px;height:58px;text-align: center;line-height: 58px;border-left: 1px solid #ccc}
+        .paybtn.selected{background-color: dodgerblue;color: #fff!important;}
+        .wechat_erweima{
+            width: 260px;
+            height: 100%;
+            margin-left: 80px;
+        }
+    </style>
+    <style>
+        .divdiv{
+            width: 300px;
+            height: 30px;
+            background-color: #fff;
+            float: right;
+            margin: 15px 60px ;
+        }
+        .search-block{width: 250px;height: 100%;float: left;}
+        #search-key{height: 26px!important;width: 240px;padding-left: 5px;}
+        #icon{
+            float: left;
+            width: 50px;
+            height: 100%;
+            background-color: #3498db!important;
+            text-align: center;
+            color: #FFFFFF;
+            line-height: 40px;
+            font-family: 微软雅黑;
+            position: relative;
+            left: -3px;
+            background: url("Images/icon_sousuo.png") no-repeat center;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#close-order").click(function () {
+                if(confirm("确定要关闭订单么？")){
+                    $(".findpwd-shadow").hide();
+                }else {
+                    return false
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="shadow">
+
+</div>
+<!--新加的订单模态框-->
+<!--<div class="findpwd-shadow">
+    <div class="findpwd-tip">
+       &lt;!&ndash; <div  class="orderhead">
+            <label style="margin-top: 12px;margin-left: 20px" class="f18">订单</label>
+            <img src="Images/shutup.png" class="fr finger" style="margin-top: 16px;margin-right: 20px" id="close-order">
+        </div>
+        <div class="ordercontent">
+            <ul>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+                <li class="fixed">
+                    <div style="width: 90px;height: 120px;margin-top: 20px;margin-left: 20px; background-color: indianred" class="fl"></div>
+                    <div style="width: 130px;height: 120px;margin-top: 20px;" class="fr">
+                        <label class="f12 m lh">小学一年级语文上册（人教版）</label>
+                        <p style="margin-top: 20px" class="f14 red bold">¥120.00</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <span class="red bold f16 bi" style="margin-left: 30px;margin-top: 20px">订单金额：¥160.00</span>
+        <div class="fr paybtn finger s bold selected" style="border-bottom-right-radius: 5px">微信支付</div>
+        <div class="fr paybtn finger s bold" >支付宝支付</div>&ndash;&gt;
+        <div class="wechat_erweima fl">
+            <div style="text-align: center;width: 100%;height: 140px;" >
+                请使用<label style="color: #e4393c;font-size: 18px;margin-top: 80px;display: inline-block"> <strong>微信</strong> </label>扫一扫<br>
+                <span style="color: #3498db;margin-top: 0px" class="bi bold">扫描二维码支付</span>
+            </div>
+            <div style="border: 1px solid #ccc">
+                <div style="width: 100%;height: 260px;text-align:center;">
+                    <img src="Images/1.png" style="margin-top: 20px;width: 220px;height: 220px">
+                </div>
+                <div style="width: 100%;height: 40px;font-size: 12px;color: #999999;background-color: #f5f5f5;font-weight: bold;line-height: 40px;text-align: center">
+                    <img src="Images/img_naozhong.png"> 二维码支付时长2个小时，请尽快支付
+                </div>
+            </div>
+        </div>
+        <img src="Images/img_weixin.png" class="fr" style="margin-right: 80px;margin-top: 80px">
+        &lt;!&ndash;<div class="wechat_erweima fl">
+            <div style="text-align: center;width: 100%;height: 140px;" >
+                请使用<label style="color: #e4393c;font-weight: 800; font-size: 18px;margin-top: 80px;display: inline-block"> 支付宝 </label>扫一扫<br>
+                <span style="color: #3498db;margin-top: 0px;" class="bi bold">扫描二维码支付</span>
+            </div>
+            <div style="border: 1px solid #ccc">
+                <div style="width: 100%;height: 260px;text-align:center;">
+                    <img src="Images/1.png" style="margin-top: 20px;width: 220px;height: 220px">
+                </div>
+            </div>
+        </div>
+        <img src="Images/img_zhifubao.png" class="fr" style="margin-right: 80px;margin-top: 80px">&ndash;&gt;
+    </div>
+</div>-->
+<!--新加的订单模态框结束-->
+
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="subheader">
+            <img src="Images/icon_normal_fanhui.png" style="margin-left: 20px;margin-top: 22px" class="finger">
+            <span class="ms-font f14" style="color: #666666;" >返回我的图书</span>
+            <img src="Images/icon_gouwuche.png" class="fr finger cheche" style="margin-top: 12px;margin-right: 20px">
+
+            <div class="divdiv fixed">
+                <div class="search-block fixed">
+                    <input type="text" id="search-key" placeholder="搜索书名">
+                </div>
+                <p id="icon" class="finger fixed"></p>
+            </div>
+            <!--<span class="fr bi sousuoicon" ></span>-->
+            <!--<input type="text" id="searchbook" placeholder="搜索书名" class="fr" style="width: 200px;height: 25px;margin-right: -1px;margin-top: 16px;">-->
+        </div>
+        <!--购物车模块-->
+        <div class="gouwuche">
+            <div class="fanhui"></div>
+            <div class="car-head" >
+                <label class="fl left20 top10 f18 ms-font">购物车</label>
+                <label class="fr right20 top10 f14 maincolor finger" id="removeall">清空</label>
+            </div>
+            <div class="car-content">
+                <div style="height: 160px;">
+                    <input type="checkbox" name="checkbuy" class="fl check" style="margin: 50px 20px 0 15px">
+                    <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+                    <div style="width: 180px;height: 120px;" class="fl left10">
+                        <label class="f12">小学一年级语文上册教材</label><br>
+                        <label class="top10 bi f12">(人教版)</label><br>
+                        <label class="f14 red top10 bi bold ">¥<span class="singleprice">12.00</span></label><br>
+                        <img src="Images/img_normal_lajixiang.png" class="finger top10 deletepay" >
+                    </div>
+                </div>
+                <div style="height: 160px;">
+                    <input type="checkbox" name="checkbuy" class="fl check" style="margin: 50px 20px 0 15px">
+                    <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+                    <div style="width: 180px;height: 120px;" class="fl left10">
+                        <label class="f12">小学一年级数学下册教材</label><br>
+                        <label class="top10 bi f12">(人教版)</label><br>
+                        <label class="f14 red top10 bi bold">¥<span class="singleprice">25.00</span></label><br>
+                        <img src="Images/img_normal_lajixiang.png" class="finger top10 deletepay" >
+                    </div>
+                </div>
+                <div style="height: 160px;">
+                    <input type="checkbox" name="checkbuy" class="fl check" style="margin: 50px 20px 0 15px">
+                    <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+                    <div style="width: 180px;height: 120px;" class="fl left10">
+                        <label class="f12">小学一年级数学下册教材</label><br>
+                        <label class="top10 bi f12">(人教版)</label><br>
+                        <label class="f14 red top10 bi bold">¥<span class="singleprice">25.00</span></label><br>
+                        <img src="Images/img_normal_lajixiang.png" class="finger top10 deletepay">
+                    </div>
+                </div>
+                <div style="height: 160px;">
+                    <input type="checkbox" name="checkbuy" class="fl check" style="margin: 50px 20px 0 15px">
+                    <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+                    <div style="width: 180px;height: 120px;" class="fl left10">
+                        <label class="f12">小学一年级语文上册教材</label><br>
+                        <label class="top10 bi f12">(人教版)</label><br>
+                        <label class="f14 red top10 bi bold">¥<span class="singleprice">30.01</span></label><br>
+                        <img src="Images/img_normal_lajixiang.png" class="finger top10 deletepay">
+                    </div>
+                </div>
+                <div style="height: 160px;">
+                    <input type="checkbox" name="checkbuy" class="fl check" style="margin: 50px 20px 0 15px">
+                    <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+                    <div style="width: 180px;height: 120px;" class="fl left10">
+                        <label class="f12">小学一年级数学下册教材</label><br>
+                        <label class="top10 bi f12">(人教版)</label><br>
+                        <label class="f14 red top10 bi bold">¥<span class="singleprice">10.00</span></label><br>
+                        <img src="Images/img_normal_lajixiang.png" class="finger top10 deletepay">
+                    </div>
+                </div>
+            </div>
+            <div class="total-bar">
+                <input type="checkbox" class="left20 top20 bi check" id="checkall"> 全选
+                <label style="margin-left: 70px">合计: <span class="red bold " >¥<span class="sumfee">0.00</span></span></label>
+                <div class="paybooks-btn fr middle bold finger">
+                    结算
+                </div>
+            </div>
+        </div>
+        <!--购物车模块-->
+        <div class="bookdetali">
+            <span class="f14 bi" style="margin-left: 20px;margin-top: 15px; color: #3498db">全部图书>><label style="color: #999999">搜索结果</label></span>
+            <div class="bookinfo_bar ">
+                <div class="bookcover fl"></div>
+
+                <label style="margin-left: 20px;color: #333333" class="f18">小学一年级语文上册（人教版）</label><br>
+
+                <span class="f12 fr maincolor bold finger" style="margin-right: 20px"><img src="Images/icon_fenxiang.png" style="margin-right: 10px" class="md">推荐</span>
+                <label style="margin-left: 20px;color: #666666" class="f14">出版社：人民教育出版社</label><br>
+                <label style="margin-left: 20px;color: #666666" class="f14">作者：鲁迅</label><br>
+                <label style="margin-left: 20px;color: #666666" class="f14">出版时间：2017-04-15</label><br>
+                <label style="margin-left: 20px;color: #666666" class="f14">大小：6.5M</label><br>
+                <label style="margin-left: 20px;color: #e4393c" class="f14">价格：¥12.00</label><br>
+                <button class="fr " style="background-color: #3498db;color: #fff;border: 1px solid #3498db; margin-right: 40px">加入购物车</button>
+                <button class="fr">立即购买</button>
+                <button class="fr">在线试看</button>
+            </div>
+            <img src="Images/img_shuxian.png" class="dividing_line">
+            <label style="margin-left: 10px;margin-top: 20px;color: #001f34" class="f18 bi">内容简介</label>
+            <div class="introtext f14" >
+                《爱的教育》（原名Cuore，直译为心）是意大利作家亚米契斯在1886年写的一部儿童小说。这是一本日记体的小说，以一个四年级男孩恩利科的眼光，从4年级10月份开学的第一天，一直写到第二年7月份。记载了小学生恩利科九个月的四年级生活。爱是整篇小说的主旨，就在最平实的字里行间，融入了种种人世间最伟大的爱：老师之爱、学生之爱、父母之爱、儿女之爱、同学之爱……每一种爱都不是惊天动地的，但却感人肺腑。整部小说以一个小学生的眼光审视着身边的美与丑、善与恶，完全在用爱去感受生活中的点点滴滴。
+                这是一本日记体的小说，以一个四年级男孩恩利科的眼光，从4年级10月份开学的第一天，一直写到第二年7月份。记载了小学生恩利科九个月的四年级生活。爱是整篇小说的主旨，就在最平实的字里行间，融入了种种人世间最伟大的爱：老师之爱、学生之爱、父母之爱、儿女之爱、同学之爱……每一种爱都不是惊天动地的，但却感人肺腑。整部小说以一个小学生的眼光审视着身边的美与丑、善与恶，完全在用爱去感受生活中的点点滴滴。
+            </div>
+            <img src="Images/img_shuxian.png" class="dividing_line">
+            <label style="margin-left: 10px;margin-top: 20px;color: #001f34" class="f18 bi">相关推荐</label>
+            <div class="recommend_list">
+                <div class="pre_icon fl" style="margin-top: 50px"></div>
+
+                <div class="post_icon fr"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

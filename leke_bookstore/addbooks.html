@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/socket.js"></script>
+    <style>
+        .div_booklist li>a>div{width: 120px;height: 160px;background-color: #00A8B3;margin: 15px auto}
+        .gouwuche{
+            width: 350px;
+            height: calc(100% - 70px);
+            background-color: #3e8f3e;
+            position: absolute;
+            top: 70px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+            <div class="gouwuche"></div>
+        </div>
+
+        <div class="subheader">
+            <img src="Images/icon_normal_fanhui.png" style="margin-left: 20px;margin-top: 22px" class="finger">
+            <span class="ms-font f14" style="color: #666666;position: relative;top: 12px" >返回我的图书</span>
+            <img src="Images/icon_gouwuche.png" class="fr finger cheche" style="margin-top: 12px;margin-right: 20px">
+            <span class="fr bi sousuoicon finger" ></span>
+            <input type="text" id="searchbook" placeholder="搜索书名" class="fr" style="width: 200px;height: 25px;margin-right: -1px;margin-top: 16px;">
+        </div>
+        <div class="thirdheder">
+            <div class="link">
+                <select class="select1" id="cmbProvince"></select>
+                <select class="select2" id="cmbCity"></select>
+                <select class="select3" id="cmbArea"></select>
+                <select class="select4"></select>
+                <script type="text/javascript">
+                    addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+                </script>
+            </div>
+        </div>
+
+        <div class="div_booklist fixed" >
+            <ul>
+                <li>
+                    <a href="#">
+                        <div></div>
+                    </a>
+                    <div style="margin-top: 10px;font-size: 12px;width: 120px;margin: 0 auto;text-align: center">小学一年级语文上册（人教版）</div>
+                    <div class="bold" style="margin-left: 15px;margin-top: 10px; color: red">¥12.00</div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div></div>
+                    </a>
+                    <div style="margin-top: 10px;font-size: 12px;width: 120px;margin: 0 auto;text-align: center">小学一年级语文上册（人教版）</div>
+                    <div class="bold" style="margin-left: 15px;margin-top: 10px; color: red">¥12.00</div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div></div>
+                    </a>
+                    <div style="margin-top: 10px;font-size: 12px;width: 120px;margin: 0 auto;text-align: center">小学一年级语文上册（人教版）</div>
+                    <div class="bold" style="margin-left: 15px;margin-top: 10px; color: red">¥12.00</div>
+                </li>
+                <li>
+                    <a href="#">
+                        <div></div>
+                    </a>
+                    <div style="margin-top: 10px;font-size: 12px;width: 120px;margin: 0 auto;text-align: center">小学一年级语文上册（人教版）</div>
+                    <div class="bold" style="margin-left: 15px;margin-top: 10px; color: red">¥12.00</div>
+                </li>
+                <li>book5</li>
+                <li>book6</li>
+                <li>book7</li>
+                <li>book8</li>
+                <li>book9</li>
+                <li>book10</li>
+                <li>book11</li>
+                <li>book12</li>
+                <li>book13</li>
+                <li>book14</li>
+                <li>book15</li>
+                <li>book16</li>
+                <li>book17</li>
+                <li>book18</li>
+                <li>book19</li>
+                <li>book20</li>
+                <li>book21</li>
+                <li>book22</li>
+            </ul>
+        </div>
+        <div style="height: 100px;background-color: indianred"></div>
+    </div>
+</div>
+</body>
+</html>

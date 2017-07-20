@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/set.css">
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/Date.js"></script>
+    <script src="Js/socket.js"></script>
+    <script src="Js/set.js"></script>
+
+</head>
+<body onload="init()">
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+            <div class="gouwuche"></div>
+        </div>
+
+        <div class="teacher_icon">
+            <img src="Images/img_nvlaosh_03.png" class="fl top10 left20">
+            <label class="left20 top20 bi f20">吴嘉欣</label><br>
+            <label class="left20 top10 bi f16 m"> 班主任&nbsp;&nbsp;|&nbsp;&nbsp;高中语文老师</label>
+        </div>
+        <div class="bookdetali">
+            <div class="tabdiv">
+                <div class="fl middle f20 finger tab-btn active">个人资料</div>
+                <div class="fl middle f20 finger tab-btn" id="tt">账号安全</div>
+            </div>
+            <div class="leftname set-tab active">
+                <a class="fr" style="margin-right: 20px;margin-top: 30px" id="editinfo">编辑个人资料</a>
+                <label style="margin-left: 100px;">id:</label>&nbsp;&nbsp;<span>12315645646</span><br>
+                <label style="margin-left: 50px;">教师编号:</label>&nbsp;&nbsp;<span>12315645646</span><br>
+                <label style="margin-left: 50px;">绑定邮箱:</label>&nbsp;&nbsp;<span>12315645646@qq.com</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="maincolor" id="changeemail">修改</a><br>
+                <label style="margin-left: 34px;">绑定手机号:</label>&nbsp;&nbsp;<span>13121835211</span>&nbsp;&nbsp;&nbsp;&nbsp;<a class="maincolor" id="changephone">修改</a><br>
+                <label style="margin-left: 80px;">职务:</label>&nbsp;&nbsp;<span>班主任</span><br>
+                <label style="margin-left: 50px;">任教学科:</label>&nbsp;&nbsp;<span>数学</span><br>
+                <label style="margin-left: 50px;">真实姓名:</label>&nbsp;&nbsp;<span class="name-val">吴嘉欣</span><input type="text" value="吴嘉欣" style="width: 200px;height: 26px" class="f16 ms-font editname-input"><br>
+                <label style="margin-left: 80px;">性别:</label>&nbsp;&nbsp;<span class="sex-val">女</span><span class="wrapsex"><input type="radio" name="sex">&nbsp;&nbsp;男<input type="radio" name="sex" style="margin-left: 50px">&nbsp;&nbsp;女</span><br>
+                <label style="margin-left: 50px;">出生日期:</label>&nbsp;&nbsp;<span class="data-val">2017-04-02</span>
+                <select id="year" onChange="swap_day()" class="dateselect"></select>
+                <select id="month" onChange="swap_day()" class="dateselect"></select>
+                <select id="day" class="dateselect"></select><br>
+                <label style="margin-left: 80px;">地址:</label>&nbsp;&nbsp;<span class="region-val">北京市海淀区学院路25号</span>
+                <select class="region"></select>
+                <select class="region"></select>
+                <select class="region"></select><br>
+                <input type="text" placeholder="请输入详细的地址" class="regiondetail">
+                <br>
+                <button class="btn-set save-edit-btn rad f14">保 存</button ><button class="btn-set quitset-btn rad">取 消</button>
+            </div>
+            <!--设置页面的账号安全start-->
+            <div class="secure set-tab" id="tab2">
+                <div class="userinfo">
+                    <img src="Images/img_meichuan.png">
+                    <label class="fl" style="margin-top: 40px;margin-left: 20px">手机号</label>
+                    <label class="fl" style="margin-left: -50px;margin-top: 80px">已验证132****5014</label>
+                    <button class="fr noborder rad ms-font " id="reset_phone">修 改</button>
+                </div>
+                <div style="width: 100%;height: 200px;border-bottom: 1px solid #c4e3f3" id="phone-block">
+                    <input type="text" placeholder="请输入正确的手机号" style="width: 200px;height: 25px;margin-left: 120px;margin-top: 20px" class="rad"><br>
+                    <input type="text" placeholder="请输入短信验证码" style="width: 150px;height: 25px;margin-left: 120px;margin-top: 20px" class="rad" >
+                    <button style="width: 130px;height: 25px;background-color: green;color: #fff" class="noborder rad ms-font">获取短信验证码</button><br>
+                    <span style="margin-left: 120px;margin-top: 10px" class="bi f12">校验码已经发送到您的手机，请注意查收</span><br>
+                    <button style="width: 100px;height: 25px;margin-left: 120px; background-color: #3498db;margin-top: 20px;color: #fff" class="rad noborder ms-font" id="submit-phonenum">提交</button>
+                </div>
+                <div class="userinfo">
+                    <img src="Images/img_yishangchuan.png">
+                    <label class="fl" style="margin-top: 40px;margin-left: 20px">邮箱</label>
+                    <label class="fl" style="margin-left: -30px;margin-top: 80px">已验证132****5014@qq.com</label>
+                    <button class="fr noborder rad ms-font" id="reset_email">修 改</button>
+                </div>
+                <div style="width: 100%;height: 200px;border-bottom: 1px solid #c4e3f3" id="email-block">
+                    <input type="text" placeholder="请输入正确的邮箱地址" style="width: 200px;height: 25px;margin-left: 120px;margin-top: 20px" class="rad"><br>
+                    <input type="text" placeholder="请输入邮箱验证码" style="width: 150px;height: 25px;margin-left: 120px;margin-top: 20px" class="rad">
+                    <button style="width: 130px;height: 25px;background-color: green;color: #fff" class="noborder rad ms-font">获取邮箱验证码</button><br>
+                    <span style="margin-left: 120px;margin-top: 10px" class="bi f12">邮箱验证码已发，请登录您的邮箱查收</span><br>
+                    <button style="width: 100px;height: 25px;margin-left: 120px; background-color: #3498db;margin-top: 20px;color: #fff" class="rad noborder ms-font" id="submit-email">提交</button>
+                </div>
+                <div class="userinfo">
+                    <img src="Images/img_mima_08.png">
+                    <label class="fl" style="margin-top: 40px;margin-left: 20px">密码</label>
+                    <label class="bi fl" style="width: 50px;height: 5px;background-color: red;margin-top: 80px;margin-left: -27px"></label>
+                    <label class="bi fl" style="width: 50px;height: 5px;background-color: red;margin-top: 80px;margin-left: 5px"></label>
+                    <label class="bi fl" style="width: 50px;height: 5px;background-color: red;margin-top: 80px;margin-left: 5px"></label>&nbsp;<span class="fl red" style="margin-top: 72px;margin-left: 10px" >强</span>
+                    <br>
+                    <button class="fr noborder rad ms-font" id="reset_pwd">修 改</button>
+                </div>
+                <div style="width: 100%;height: 200px;border-bottom: 1px solid #c4e3f3" id="pwd-block">
+                    <input type="password" placeholder="输入旧密码" style="width: 200px;height: 25px;margin-left: 120px;margin-top: 15px" class="rad">&nbsp;&nbsp;<span class="red">旧密码不对!</span><br>
+                    <input type="password" placeholder="输入新密码" style="width: 200px;height: 25px;margin-left: 120px;margin-top: 15px" class="rad"><br>
+                    <input type="password" placeholder="确认新密码" style="width: 200px;height: 25px;margin-left: 120px;margin-top: 15px" class="rad">&nbsp;&nbsp;<span class="red">两次密码不一致!</span><br>
+                    <button style="width: 100px;height: 25px;margin-left: 120px; background-color: #3498db;margin-top: 20px;color: #fff" class="rad noborder ms-font" id="submit-pwd">提交</button>
+                </div>
+            </div>
+            <!--设置页面的账号安全end-->
+        </div>
+    </div>
+</div>
+</body>
+</html>

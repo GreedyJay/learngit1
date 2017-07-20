@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #CommentBubble {
+            max-width: 195px;
+            margin: 30px;
+            padding: 10px;
+            float: left;
+            background: #8867b9;
+            position: relative;
+            border-radius: 5px;
+            color: #fff;
+            font-family: 微软雅黑;
+            line-height: 1.5em;
+        }
+        /*前角*/
+        #CommentBubble:before {
+            content: "";
+            width: 0;
+            height: 0;
+            right: 100%;
+            top: 10px;
+            position: absolute;
+            border-top: 13px solid transparent;
+            border-right: 26px solid red;
+            border-bottom: 13px solid transparent;
+        }
+        /*上角*/
+        #CommentBubble:after {
+            content: "";
+            width: 0;
+            height: 0;
+            left: 50px;
+            bottom: 100%;
+            position: absolute;
+            border-left: 10px solid transparent;
+            border-bottom: 20px solid gold;
+            border-right: 10px solid transparent;
+        }
+        /*右角气泡*/
+        #CommentBubble:after {
+            content: "";
+            width: 0;
+            height: 0;
+            left: 100%;
+            top: 10px;
+            position: absolute;
+            border-top: 10px solid transparent;
+            border-left: 15px solid #8867b9;
+            border-bottom: 10px solid transparent;
+        }
+        /*下角气泡*/
+        /*#CommentBubble:after {
+            content: "";
+            width: 0;
+            height: 0;
+            left: 100px;
+            top: 100%;
+            position: absolute;
+            border-left: 20px solid transparent;
+            border-top: 20px solid yellowgreen;
+            border-right: 20px solid transparent;
+        }*/
+    </style>
+    <script src="Js/join1.js"></script>
+    <script src="Js/jquery-1.8.0.min.js"></script>
+    <script>
+        $(function () {
+            $("#checkall").click(function () {
+                $('[name=item1]:checkbox').attr("checked",this.checked);
+            });
+            $('[name=item1]:checkbox').click(function () {
+                var flag=true;
+                $('[name=item1]:checkbox').each(function () {
+                    if(!this.checked){
+                        flag=false;
+                    }
+                })
+                $("#checkall").attr('checked',flag);
+            })
+        })
+        $(function () {
+            
+        });
+        $(function () {
+            $("input[type=checkbox]").click(function () {
+                var sum=0;
+                $("input[type=checkbox][name=item1]:checked").each(function () {
+                    sum+=parseFloat(parseFloat($(this).next().html()).toFixed(2));
+                })
+                $(".total").html(sum)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        第一级：<select id="area"></select>
+        第二级：<select id="cmbProvince"></select>
+        第三级：<select id="cmbCity"></select>
+        第四级：<select id="cmbArea"></select>
+        <script type="text/javascript">
+            addressInit('area','cmbProvince','cmbCity','cmbArea','西北地区', '北京', '市辖区', '东城区');
+            //addressInit('Select1', 'Select2', 'Select3');
+        </script>
+    </div>
+    <input type="checkbox" id="checkall">全选
+    <div>
+        <input type="checkbox" name="item1"><span>15</span>
+    </div>
+    <div>
+        <input type="checkbox" name="item1"><span>55</span>
+    </div>
+    <div>
+        <input type="checkbox" name="item1"><span>28</span>
+    </div>
+    <div>
+        <input type="checkbox" name="item1"><span>15.35</span>
+    </div>
+    <div>
+        <input type="checkbox" name="item1"><span>10.03</span>
+    </div>
+    <label class="total"></label>
+<div id="CommentBubble">
+    直接的萨芬讲课费哈撒即可萨芬讲课费哈撒即可萨芬讲课
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#all").click(function () {
+                if($(this).prop('checked')){
+                    $(".singlediv>input").prop('checked',true);
+                }else{
+                    $(".singlediv>input").prop('checked',false);
+                }
+            });
+            $(".singlediv>input").click(function () {
+                if ( $(".singlediv>input:checked").length==$(".singlediv>input").length){
+                    $("#all").prop('checked',true);
+                }else {
+                    $("#all").prop('checked',false);
+                }
+            });
+            $("#all,.singlediv>input").click(function () {
+                var sum=0;
+                $(".singlediv>input:checked").each(function () {
+                    var price=($(this).next().text())
+                    sum+=price;
+                })
+                $(".sumfee").html(sum);
+            })
+        })
+        $(function () {
+            var a=[2,56,13,9,48];
+            a.sort(function (a,b) {
+                return a-b;
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="singlediv">
+    <input type="checkbox" name="single"><label>1</label>
+    <input type="checkbox" name="single" id="second"><label>2</label>
+    <input type="checkbox" name="single"><label>30.02</label>
+    <input type="checkbox" name="single"><label>4.01</label>
+</div>
+<div>
+    <input type="checkbox" id="all">全选
+</div>
+<span></span>
+</body>
+</html>

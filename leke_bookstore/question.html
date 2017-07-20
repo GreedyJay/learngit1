@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/chat.css">
+    <link rel="stylesheet" href="Css/session.css">
+    <link rel="stylesheet" href="Css/question.css">
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Js/bootstrap-treeview.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/socket.js"></script>
+    <script src="Js/question.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+            <div class="gouwuche"></div>
+        </div>
+
+        <div class="createquestion">
+            <select>
+                <option>小学一年级语文</option>
+                <option>小学一年级数学</option>
+                <option>小学一年级英语</option>
+                <option>小学一年级思想品德</option>
+            </select>
+            <button class="addbook ms-font fr rad">+ 创建问题</button>
+        </div>
+        <div class="catalog fl">
+            <div id="catalog-bk" class="gg"></div>
+        </div>
+        <div>
+            <div class="subject_display fr right10" >
+                <div class="subject_type">
+                    <label class="f14 l exercise-type">题型: 填空题</label>
+                    <label class="fr right20 f14 l create-time">创建时间: 2017-03-02</label>
+                </div>
+                <div style="width: 100%;height: 150px"></div>
+                <div class="answer">
+                    <img src="Images/img_normal_daan.png" style="margin-left: 20px;margin-top: 13px" class="fl">&nbsp;
+                    <label class="f14 finger watchans" >查看答案</label>
+                    <label class="fr f14 finger right20 delete-answer">删除</label>
+                    <img src="Images/img_normal_lajitong.png" class="fr finger right10" style="margin-top: 13px">
+                </div>
+            </div>
+            <div class="subject_display fr right10">
+                <div class="subject_type">
+                    <label class="f14 l exercise-type">题型: 选择题</label>
+                    <label class="fr right20 f14 l create-time">创建时间: 2017-03-02</label>
+                </div>
+                <div style="width: 100%;height: 150px"></div>
+                <div class="answer">
+                    <img src="Images/img_normal_daan.png" style="margin-left: 20px;margin-top: 13px" class="fl">&nbsp;
+                    <label class="f14 finger watchans" >查看答案</label>
+                    <label class="fr f14 finger right20 delete-answer">删除</label>
+                    <img src="Images/img_normal_lajitong.png" class="fr finger right10" style="margin-top: 13px">
+                </div>
+            </div>
+            <div class="subject_display fr right10">
+                <div class="subject_type">
+                    <label class="f14 l exercise-type">题型: 问答题</label>
+                    <label class="fr right20 f14 l create-time">创建时间: 2017-03-02</label>
+                </div>
+                <div style="width: 100%;height: 150px"></div>
+                <div class="answer">
+                    <img src="Images/img_normal_daan.png" style="margin-left: 20px;margin-top: 13px" class="fl">&nbsp;
+                    <label class="f14 finger watchans">查看答案</label>
+                    <label class="fr f14 finger right20 delete-answer">删除</label>
+                    <img src="Images/img_normal_lajitong.png" class="fr finger right10" style="margin-top: 13px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

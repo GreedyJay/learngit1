@@ -1,0 +1,123 @@
+.communicate{
+    height: 770px;
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+}
+.menubar{
+    width: 60px;
+    height: 100%;
+    background-color: #0f0f0f;
+}
+.menubar div{ height: 70px;cursor: pointer;}
+.menubar div:nth-child(1){background: url("../Images/img_press_xiaoxi.png") no-repeat center}
+.menubar div:nth-child(2){background: url("../Images/img_press_lianxiren.png") no-repeat center}
+.menubar div:nth-child(3){background: url("../Images/img_press_qunzu.png") no-repeat center}
+.friendlist{
+    width: 320px;
+    height: 100%;
+    background-color: #eff0f1;
+    overflow: auto;
+}
+.friendlist div{
+    width: 100%;
+    height: 70px;
+    background-color: #eff0f1;
+    position:relative;
+}
+.friendlist div>img{
+    margin: 15px 0 15px 15px
+}
+.friendlist div>label{
+    position: absolute;
+    left: 65px;
+    top: 12px;
+}
+.friendlist div>span.chattime{
+    margin-top: 14px;
+    margin-right: 5px;
+}
+
+.friendlist>div p{margin-top: 38px;margin-left: 10px;width: 170px;margin-right:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.friendlist div.addcolor{background-color: #e2e5e7}
+.chatbroom{
+    height: 100%;
+    width: calc(100% - 380px);
+    min-width: 560px;
+}
+.sessiondiv{
+    /*width: calc(100% - 20px);*/
+    width: calc(100% - 20px);
+    padding: 0 10px;
+    height: 500px;
+    border-top: 1px solid #ccc;
+    margin: 0 auto;
+}
+.input_block{
+    width: 100%;
+    height: 200px;
+    border-top: 1px solid #ccc;
+}
+.folder{margin-left: 20px;margin-top: 10px}
+.shuru{
+    height: 80px;
+    width: calc(100% - 40px);
+    resize: none;
+    overflow: auto;
+    margin-top: 10px;
+    margin-left: 20px;
+    border: none;
+    outline: none;
+}
+.sendmessage{
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.sendmessage:hover{
+    background-color: #2893db;
+    color: #fff;
+}
+/*对话框样式*/
+div.dialog-u{max-width: 500px;background-color: #3498db;padding: 10px;position:relative;line-height: 1.5em;border-radius: 5px;margin-left: 15px;display: inline-block;color: #fff}
+div.dialog-me{max-width: 500px;background-color: #eff0f1;padding: 10px;position: relative;line-height: 1.5em;border-radius: 5px;float: right;margin-right: 15px;color: #333}
+span.xiaojianu{
+    color: #3498db;
+    position: absolute;
+    top: 10px;
+    left: -8px;
+    font-family: font-family;
+}
+span.xiaojianme{
+    height: 90px;
+    color: #eff0f1;
+    position: absolute;
+    top: 10px;
+    right: -7px;
+    font-family: font-family;
+}
+div.layer{margin-top: 20px}
+
+.scrollbar::-webkit-scrollbar{
+    width: 10px;
+    height: 16px;
+    background-color: #f5f5f5;
+}
+/*定义滚动条的轨道，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+/*定义滑块，内阴影及圆角*/
+.scrollbar::-webkit-scrollbar-thumb{
+    /*width: 10px;*/
+    height: 20px;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #ccc;
+}

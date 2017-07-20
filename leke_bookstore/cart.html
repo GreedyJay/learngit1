@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/cart.css">
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#checkall").click(function () {
+
+                $('[name=checkbuy]:checkbox').attr("checked",this.checked);
+
+            });
+            $('[name=checkbuy]:checkbox').click(function () {
+                var flag=true;
+                $('[name=checkbuy]:checkbox').each(function () {
+                    if(!this.checked){
+                        flag=false;
+                    }
+                })
+                $("#checkall").attr('checked',flag);
+            })
+        });
+        $(function () {
+            $("#slide").bind('click',function () {
+                $(".gouwuche").animate({
+                    right:'0px',
+                },'slow')
+            });
+            $(".fanhui").bind('click',function () {
+                $(".gouwuche").animate({
+                    right:'-=390px',
+                },'slow')
+            })
+        })
+
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+<button id="slide">购物车</button>
+<div class="gouwuche">
+    <div class="fanhui"></div>
+    <div class="car-head" >
+        <label class="fl left20 top10 f18 ms-font">购物车</label>
+        <label class="fr right20 top20 f14 maincolor finger" id="removeall">清空</label>
+    </div>
+    <div class="car-content">
+        <div style="height: 160px;">
+            <input type="checkbox" name="checkbuy" class="fl" style="margin: 50px 20px 0 15px">
+            <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+            <div style="width: 180px;height: 120px;" class="fl left10">
+                <label class="f12">小学一年级语文上册教材</label><br>
+                <label class="top10 bi f12">(人教版)</label><br>
+                <label class="f14 red top20 bi bold ">¥<span class="singleprice">12.00</span></label><br>
+                <img src="Images/img_normal_lajixiang.png" class="finger top20">
+            </div>
+        </div>
+        <div style="height: 160px;">
+            <input type="checkbox" name="checkbuy" class="fl" style="margin: 50px 20px 0 15px">
+            <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+            <div style="width: 180px;height: 120px;" class="fl left10">
+                <label class="f12">小学一年级数学下册教材</label><br>
+                <label class="top10 bi f12">(人教版)</label><br>
+                <label class="f14 red top20 bi bold">¥<span class="singleprice">25.00</span></label><br>
+                <img src="Images/img_normal_lajixiang.png" class="finger top20">
+            </div>
+        </div>
+        <div style="height: 160px;">
+            <input type="checkbox" name="checkbuy" class="fl" style="margin: 50px 20px 0 15px">
+            <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+            <div style="width: 180px;height: 120px;" class="fl left10">
+                <label class="f12">小学一年级语文上册教材</label><br>
+                <label class="top10 bi f12">(人教版)</label><br>
+                <label class="f14 red top20 bi bold">¥<span class="singleprice">30.01</span></label><br>
+                <img src="Images/img_normal_lajixiang.png" class="finger top20">
+            </div>
+        </div>
+        <div style="height: 160px;">
+            <input type="checkbox" name="checkbuy" class="fl" style="margin: 50px 20px 0 15px">
+            <div style="width: 90px;height: 120px;background-color: darkolivegreen" class="bi fl"></div>
+            <div style="width: 180px;height: 120px;" class="fl left10">
+                <label class="f12">小学一年级数学下册教材</label><br>
+                <label class="top10 bi f12">(人教版)</label><br>
+                <label class="f14 red top20 bi bold">¥<span class="singleprice">10.00</span></label><br>
+                <img src="Images/img_normal_lajixiang.png" class="finger top20">
+            </div>
+        </div>
+    </div>
+    <div class="total-bar">
+        <input type="checkbox" class="left20 top20" id="checkall"> 全选
+        <label style="margin-left: 50px">合计: <span class="red bold " >¥<span class="sumfee">350.00</span></span></label>
+        <div class="paybooks-btn fr middle bold finger">
+            结算
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#removeall").click(function () {
+            if(confirm("确定要清空购物车所有商品么？")){
+                $(".car-content").html('');
+            }else {
+                return false;
+            }
+        })
+    })
+    /*$(function () {
+        var sum=0;
+        $("span.singleprice").each(function () {
+            sum+=parseFloat($(this).html()*1.00);
+        });
+        alert(sum)
+    });*/
+</script>
+</body>
+</html>

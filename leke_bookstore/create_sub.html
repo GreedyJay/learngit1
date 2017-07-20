@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/main.css">
+    <link rel="stylesheet" href="Css/common.css">
+    <link rel="stylesheet" href="Css/chat.css">
+    <link rel="stylesheet" href="Css/session.css">
+    <link rel="stylesheet" href="Css/question.css">
+    <link rel="stylesheet" href="Css/preview.css">
+    <script src="Js/jquery-3.1.1.min.js"></script>
+    <script src="Js/common.js"></script>
+    <script src="Js/socket.js"></script>
+    <script>
+        $(function () {
+            if($(".select-type").val()==='选择题'){
+                $(".multiple-choice-block").show();
+                $(".non-multiple-choice-block").hide()
+            }
+            /*$(".multiple-choice-block").hide();*/
+            $(".select-type").change(function () {
+                if($(this).val()==='选择题'){
+                    $(".non-multiple-choice-block").fadeOut()
+                    $(".multiple-choice-block").fadeIn();
+                }else{
+                    $(".multiple-choice-block").fadeOut();
+                    $(".non-multiple-choice-block").fadeIn()
+                }
+            });
+
+            $("#preview-action").click(function () {
+                $(".preview-shadow").fadeIn()
+            })
+            $("#shut-preview").click(function () {
+                $(".preview-shadow").fadeOut()
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="preview-shadow">
+    <div class="preview-answer">
+        <div class="preview-header fixed">
+            <span class="left20 f16">预览</span>
+            <label style="font-size: 28px" class="fr right20 finger" id="shut-preview">×</label>
+        </div>
+        <div class="preview-content" >
+            <span class="top10 bi" style="margin-left: 40px">题型：&nbsp;选择题</span>
+            <div class="fixed top10">
+                <span style="margin-left: 40px">题干：</span>
+                <div style="width: 89%;float: right;min-height: 100px;background-color: #00bbff">
+                    <!--放题干的位置-->
+                </div>
+            </div>
+            <div class="top10">
+                <span style="margin-left: 40px">答案：&nbsp;A</span>
+            </div>
+            <div class="fixed top10">
+                <span style="margin-left: 40px">解析：</span>
+                <div style="width: 89%;float: right;min-height: 550px;background-color: #00bbff">
+                    <!--放答案解析的位置-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="wrap">
+    <div class="nav_left fl">
+        <div class="div_logo">
+            <div class="logoimg">
+                <img src="Images/logo1.png" style="margin-top: 15px">
+            </div>
+            <p style="margin-top: 10px" class="ms-font bold f16">融捷教育科技有限公司</p>
+            <p style="margin-top: 8px;font-size: 12px;">&nbsp;专注前沿教育，我们引领时代！</p>
+        </div>
+        <div class="left_nav ms-font f16">
+            <div class="pressed"><img src="Images/icon_tushu.png">图书</div>
+            <div><img src="Images/icon_wenda.png">问答</div>
+            <div><img src="Images/icon_xiaoxi.png">消息</div>
+            <div><img src="Images/icon_shezhi.png">设置</div>
+        </div>
+    </div>
+    <div class="content_right fr">
+        <div class="header">
+            <img src="Images/icon_xiala.png" class="shezhi fr finger">
+            <span class="loginname fr finger ms-font">侯水强</span>
+            <img src="Images/img_nanjiaoshi.png" class="Avatar fr">
+            <div class="personal_set">
+                <div>
+                    <a href="#">个人设置</a>
+                </div>
+                <div>
+                    <a href="#">退出</a>
+                </div>
+            </div>
+            <div class="gouwuche"></div>
+        </div>
+
+
+        <div class="create_sub">
+            <label class="red left20">*</label><label>题型:</label>
+            <select class="left20 top20 select-type" >
+                <option>选择题</option>
+                <option>填空题</option>
+                <option>解答题</option>
+            </select>
+            <button class="preview-btn" id="preview-action">预览</button>
+            <br>
+            <label class="red left20 top20">*</label><label>题干:</label><br>
+            <div style="width: 780px;height: 150px;border: 1px solid #CCCCCC;position: absolute;left: 85px;top: 70px">
+                <a>上传照片</a> 或者 <a>上传mht文件</a>
+            </div>
+            <label class="red left20" style="margin-top: 150px">*</label><label>答案:</label><br>
+            <div style="width: 780px;height: 150px;position: absolute;left: 85px;top: 246px;" class="multiple-choice-block">
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> A
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> B
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> C
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option3"> D
+                </label>
+            </div>
+            <div style="width: 780px;height: 150px;border: 1px solid #CCCCCC;position: absolute;left: 85px;top: 250px;" class="non-multiple-choice-block">
+                <a>上传照片</a> 或者 <a>上传mht文件</a>
+            </div>
+            <label class="red left20" style="margin-top: 160px">*</label><label>解析:</label>
+            <div style="width: 780px;height: 150px;border: 1px solid #CCCCCC;position: absolute;left: 85px;top: 430px">
+
+            </div>
+            <div class="buttonbar">
+                <button>创建</button><button>取消</button>
+            </div>
+            <div class="question_hint f14 ms-font">
+                将问题保存为图片(图片宽度为 <i class="red">580像素</i> 显示最佳)，并将其上传；或者在word中编辑问题，另存为mht格式文件，然后将其上传。
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
